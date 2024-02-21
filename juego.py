@@ -27,8 +27,7 @@ class Juego:
                     break
             else:
                 self.jugador.mostrar_cartas(True)
-                print(self.jugador.dar_valor())
-                int(self.jugador.dar_valor())
+                print(type(self.jugador.dar_valor()))
                 if self.jugador.dar_valor() <= 21:
                     while self.casa.dar_valor() < self.jugador.dar_valor():
                         self.casa.agregar_carta(self.mazo.dar_carta())
