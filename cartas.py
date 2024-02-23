@@ -19,12 +19,14 @@ class Mazo:
         else:
             self.cartas=[Carta(v, p)for v in ["A","J", "Q", "K"]+[str(x) for x in range(2, 11)] for p in ["picas", "treboles", "corazones", "diamantes"]]
             random.shuffle(self.cartas)   
-    def dar_valor(self):
+    def dar_valor(self, todas=False):
         valor=0
-        for c in self.cartas:
+        for c in self.cartas[1:]:
             valor+=c.dar_valor()
         if self.tiene_as() and valor <=11:
             valor+=10
+        if todas:
+            valor+=self.cartas[0].dar_valor()
         return valor
     def tiene_as(self):
         for c in self.cartas:
@@ -39,7 +41,7 @@ class Mazo:
         if todas:
             print(self.cartas[0].mostrar())
         else:
-            print("* de *")
+            print(" ")
         for c in self.cartas[1:]:
             print(c.mostrar())
     
