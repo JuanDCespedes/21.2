@@ -24,20 +24,29 @@ class Juego:
                 if self.jugador.dar_valor() > 21:
                     print("una pena, te pasas, perdiste xd")
                     print("la casa gano")
-                    break
+                    break;
             else:
+                print("tus cartas: ")
                 self.jugador.mostrar_cartas(True)
-                print(type(self.jugador.dar_valor()))
+                print(self.jugador.dar_valor())
+                print("cartas de la casa: ")
                 if self.jugador.dar_valor() <= 21:
                     while self.casa.dar_valor() < self.jugador.dar_valor():
                         self.casa.agregar_carta(self.mazo.dar_carta())
                         self.casa.mostrar_cartas()
                         print(self.casa.dar_valor())
-                        if self.casa.dar_valor() >= self.jugador.dar_valor and not(self.casa.dar_valor > 21):
-                            print("la casa gana xd, tuviste: "+ self.jugador.dar_valor())
-                            print("mientras que la casa: "+self.casa.dar_valor())
+                        if self.casa.dar_valor() >= self.jugador.dar_valor() and not(self.casa.dar_valor() > 21):
+                            print("la casa gana xd, tuviste: "+ str(self.jugador.dar_valor()))
+                            print("mientras que la casa: "+str(self.casa.dar_valor()))
+                            break;
+                        elif self.casa.dar_valor() > 21:
+                            print("ganaste la casa se paso de 21 con: "+ str(self.casa.dar_valor()))
+                            break;
+                        elif self.casa.dar_valor() < self.jugador.dar_valor():
+                            print("le ganaste a la casa con: "+str(self.jugador.dar_valor()))
+                            print("mientras que la casa tuvo: "+str(self.casa.dar_valor()))
                 elif self.jugador.dar_valor() > 21:
                     print("una pena, te pasas, perdiste xd")
                     print("la casa gano")
-                    break
-                break
+                    break;
+                break;
