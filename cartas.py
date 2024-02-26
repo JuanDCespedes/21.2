@@ -21,12 +21,10 @@ class Mazo:
             random.shuffle(self.cartas)   
     def dar_valor(self, todas=False):
         valor=0
-        for c in self.cartas[1:]:
+        for c in self.cartas:
             valor+=c.dar_valor()
         if self.tiene_as() and valor <=11:
             valor+=10
-        if todas:
-            valor+=self.cartas[0].dar_valor()
         return valor
     def tiene_as(self):
         for c in self.cartas:
@@ -44,14 +42,3 @@ class Mazo:
             print(" ")
         for c in self.cartas[1:]:
             print(c.mostrar())
-    
-if __name__=="__main__":
-    m=Mazo()
-    j=Mazo(True)
-    j.agregar_carta(m.dar_carta())
-    j.cartas.append(m.dar_carta())
-    j.agregar_carta(Carta("A", "picas"))
-    j.mostrar_cartas()
-    for c in j.cartas:
-        print(c.mostrar())
-    print(j.dar_valor())
